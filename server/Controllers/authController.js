@@ -12,14 +12,14 @@ export async function registerUser(req,res){
         const reqBody = z.object({
             firstName: z.string().max(100, "firstName must be less than 100 letters"),
             lastName: z.string().max(100, "lastName must be less than 100 letters"),
-            email : z.string().email("Email not in correct format"),
+            email : z.email("Email not in correct format"),
             password : z.string().min(8, "Password must be atleast 8 characters")
         })
         const parsedData=reqBody.safeParse(req.body);
         if(!parsedData.success){
             return res.status(400).json({ 
                 message:"Invalid user data",
-                error:parsedData.error.errors
+                error:z.treeifyError(parsedData.error)
             });
         }
         const { firstName, lastName, email, password } = req.body;

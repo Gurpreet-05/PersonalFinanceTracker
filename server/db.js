@@ -14,7 +14,8 @@ const transactionSchema=new schema({
     description:{type:String,required:true},
     amount:{type:Number,required:true},
     date:{type:Date,default:Date.now},
-    type:{type:String,enum:['income','expense'],required:true}
+    type:{type:String,enum:['income','expense'],required:true},
+    category: {type:String, required:true, enum:['Food', 'Transport', 'Entertainment', 'Shopping', 'Utilities', 'Health', 'Salary', 'Investment', 'Other']}
 }, {timestamps:true});
 
 const userModel=mongoose.model('User',userSchema);
