@@ -52,6 +52,10 @@ export async function getTransactions(req,res){
                 const monthStart=new Date(now.getFullYear(),now.getMonth(),1);
                 query.date={$gte:monthStart};
             }
+            else if(frequency==='year'){
+                const yearStart=new Date(now.getFullYear(),0,1);
+                query.date={$gte:yearStart};
+            }
         }
         const transactions=await transactionModel.find(query).sort({date:-1});
         return res.status(200).json(transactions);

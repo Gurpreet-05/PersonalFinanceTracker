@@ -35,9 +35,10 @@ export async function registerUser(req,res){
             hash
         });
         if(user){
-            res.status(201).json({
+            res.status(200).json({
                 _id: user.id,
                 firstName: user.firstName,
+                lastName: user.lastName,
                 email: user.email,
                 token: generateToken(user.id),
             });
@@ -55,9 +56,10 @@ export async function loginUser(req,res) {
         const user=await userModel.findOne({email});
 
         if(user && (await bcrypt.compare(password,user.hash))){
-            res.status(201).json({
+            res.status(200).json({
                 _id: user.id,
                 firstName: user.firstName,
+                lastName: user.lastName,
                 email: user.email,
                 token: generateToken(user.id),
             });

@@ -7,7 +7,6 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Here are your custom colors!
         navy: {
           100: '#F1F5F9',
           500: '#64748B',

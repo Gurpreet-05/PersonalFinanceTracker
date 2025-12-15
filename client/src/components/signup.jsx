@@ -1,71 +1,86 @@
+import { useState } from 'react';
 import { useSetRecoilState } from 'recoil';
-import { isNewUser } from '../atoms/atoms';
+import { useNavigate } from 'react-router-dom';
+import { isNewUser, loggedIn } from '../atoms/atoms.js';
+import instance from '../api/axios.js';
 
-export const Signup = () => {
-    const setIsNew = useSetRecoilState(isNewUser);
+export function Signup(){
+    const setNewUser=useSetRecoilState(isNewUser);
+    const navigate=useNavigate();
+    const setloggedIn=useSetRecoilState(loggedIn);
+
+    const [formData, setFormData]=useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password: ""
+    });
+    const [error, setError]=useState("");
+
+    const handleChange=(e)=>{
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit=async(e)=>{
+        e.preventDefault();
+        setError("");
+
+        try{
+            const res=await instance.post('/auth/register', formData);
+
+            if (res.status===200) {
+                const data=res.data;
+                localStorage.setItem('token', data.token);
+                localStorage.setItem('user', JSON.stringify(data));
+                setloggedIn(true);
+                navigate('/dashboard');
+            } 
+        } catch (err) {
+            setError("Application Error: "+ err.message);
+        }
+    };
 
     return (
-        <div className="w-full max-w-md p-6 bg-white rounded-xl shadow-lg border border-slate-100 mt-6">
-            <div className="text-center mb-6">
-                <h2 className="text-2xl font-bold text-slate-900">Create Account</h2>
-                <p className="text-slate-500 text-sm">Start tracking your finance today</p>
-            </div>
+        <div className="w-full max-w-sm p-6 bg-white border border-slate-200 rounded-xl shadow-sm">
+            <h2 className="text-2xl font-bold text-slate-800 mb-1">Create Account</h2>
+            <p className="text-sm text-slate-500 mb-6">Start managing your finances today</p>
 
-            <form className="space-y-3">
-                <div className="grid grid-cols-2 gap-4">
-                    <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-1">First Name</label>
-                        <input 
-                            type="text" 
-                            placeholder="John"
-                            className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none"
-                        />
-                    </div>
-                    <div>
-                        <label className="block text-sm font-medium text-slate-700 mb-1">Last Name</label>
-                        <input 
-                            type="text" 
-                            placeholder="Doe"
-                            className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none"
-                        />
-                    </div>
-                </div>
+            {error && <div className="p-3 mb-4 text-sm text-red-600 bg-red-50 rounded-lg">{error}</div>}
 
-                <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">Email Address</label>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                <div className="flex gap-2">
                     <input 
-                        type="email" 
-                        placeholder="you@example.com"
-                        className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none"
+                        name="firstName" placeholder="First Name" onChange={handleChange} required
+                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500" 
+                    />
+                    <input 
+                        name="lastName" placeholder="Last Name" onChange={handleChange} required
+                        className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500" 
                     />
                 </div>
-
-                <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-1">Password</label>
-                    <input 
-                        type="password" 
-                        placeholder="Create a password"
-                        className="w-full px-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 outline-none"
-                    />
-                </div>
-
-                <button 
-                    type="button" 
-                    className="w-full py-3 bg-emerald-500 text-white font-bold rounded-lg hover:bg-emerald-600 transition-colors shadow-md mt-2"
-                >
-                    Get Started
+                <input 
+                    name="email" type="email" placeholder="Email Address" onChange={handleChange} required
+                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500" 
+                />
+                <input 
+                    name="password" type="password" placeholder="Password (Min 8 chars)" onChange={handleChange} required
+                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500" 
+                />
+                
+                <button type="submit" className="w-full py-2.5 mt-2 font-semibold text-white bg-emerald-600 rounded-lg hover:bg-emerald-700 transition-colors">
+                    Sign Up
                 </button>
             </form>
 
-            <div className="mt-6 text-center text-sm text-slate-600">
-                Already have an account?{' '}
+            <div className="mt-4 text-center text-sm text-slate-600">
+                Already have an account?{" "}
                 <button 
-                    onClick={() => setIsNew(false)} 
-                    className="font-bold text-emerald-600 hover:text-emerald-700 hover:underline"
+                    onClick={() => setNewUser(false)} 
+                    className="font-medium text-emerald-600 hover:underline"
                 >
-                    Log in
+                    Sign In
                 </button>
             </div>
         </div>
     );
-};
+}
