@@ -44,10 +44,11 @@ Make sure you have **Node.js** and **MongoDB** installed on your machine.
 ```bash
 git clone [https://github.com/Gurpreet-05/PersonalFinanceTracker.git]
 cd personal-finance-tracker
+```bash
 2. Backend Setup
 Navigate to the server folder and install dependencies:
 
-Bash
+```bash
 
 cd server
 npm install
@@ -60,23 +61,25 @@ MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_super_secret_key
 Start the server:
 
-Bash
-
 npm run dev
 # Server running on port 5000...
+
+```bash
+
 3. Frontend Setup
 Open a new terminal, navigate to the client folder, and install dependencies:
 
-Bash
+```bash
 
 cd client
 npm install
 Start the React app:
 
-Bash
-
 npm run dev
 # Local: http://localhost:5173/
+
+```bash
+
 🔮 Future Improvements
 This project is actively maintained! I plan to add the following features over time:
 
