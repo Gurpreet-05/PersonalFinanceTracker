@@ -47,7 +47,9 @@ export function Signup(){
             <p className="text-sm text-slate-500 mb-6">Start managing your finances today</p>
 
             {error && <div className="p-3 mb-4 text-sm text-red-600 bg-red-50 rounded-lg">{error}</div>}
-
+            <div className="bg-yellow-50 text-yellow-700 p-2 text-xs rounded mb-4">
+                Since this is a free demo, the server may take up to 60 seconds to wake up for the first login.
+            </div>
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                 <div className="flex gap-2">
                     <input 
