@@ -50,7 +50,7 @@ export function Chart({transactions}){
                         ))}
                     </Pie>
                     <Tooltip 
-                        formatter={(value)=>`₹${value.toLocaleString()}`}
+                        formatter={(value)=>`₹${value}`}
                         contentStyle={{backgroundColor:'white', borderRadius:'8px', border:'1px solid #e2e8f0'}}
                     />
                     <Legend verticalAlign="bottom" height={36} iconType="circle"/>

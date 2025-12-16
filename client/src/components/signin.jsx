@@ -14,14 +14,15 @@ export function Signin(){
 
     const handleChange=(e)=>{
         setFormData({ ...formData, [e.target.name]: e.target.value });
+        // e.target is the html element that triggers the funcn
     };
 
     const handleSubmit=async (e)=>{
-        e.preventDefault();
+        e.preventDefault(); // in html , submit pe refresh hota which we prevent with this
         setError("");
         try {
             const res=await instance.post('/auth/login', formData);
-            if (res.status===200) {
+            if(res.status===200) {
                 const data=res.data;
                 localStorage.setItem('token', data.token);
                 localStorage.setItem('user', JSON.stringify(data));
@@ -29,7 +30,8 @@ export function Signin(){
                 navigate('/dashboard');
             } 
         } catch (err) {
-            setError("Application Error: " + err.message);
+            if(err.status===400) setError("Invalid email or password");
+            else setError("Application Error: " + err.message);
         }
     };
 

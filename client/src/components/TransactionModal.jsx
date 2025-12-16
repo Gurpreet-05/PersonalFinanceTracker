@@ -43,7 +43,7 @@ export function TransactionModal({isOpen, onClose, onSuccess, transactionToEdit}
 
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
-            <div className="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden animate-in fade-in zoom-in duration-200">
+            <div className="bg-white rounded-xl shadow-xl w-full max-w-md overflow-hidden">
                 <div className="flex justify-between items-center p-6 border-b border-slate-100">
                     <h2 className="text-xl font-bold text-slate-800">{transactionToEdit ? 'Edit Transaction' : 'New Transaction'}</h2>
                     <button onClick={onClose} className="text-slate-400 hover:text-slate-600"><X size={24}/></button>

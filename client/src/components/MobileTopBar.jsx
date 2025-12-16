@@ -16,7 +16,7 @@ export function MobileTopBar() {
     };
 
     return (
-        <div className="md:hidden fixed top-0 left-0 right-0 h-16 bg-white border-b border-slate-200 flex items-center justify-between px-6 z-50">
+        <div className="md:hidden fixed top-0 left-0 right-0 h-16 bg-white border-b-2 border-slate-200 flex items-center justify-between px-6 z-10">
             <Link to="/">
                 <div className="flex items-center gap-2">
                     <img src={logo} alt="" className="w-12 h-12 md:w-16 md:h-16 rounded-lg shadow-sm"/>

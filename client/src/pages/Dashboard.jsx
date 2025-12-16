@@ -26,7 +26,8 @@ export function Dashboard(){
     },[]);
 
     return (
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
+            <TransactionModal isOpen={isModalOpen} onClose={()=>setIsModalOpen(false)} onSuccess={fetchTransactions}/>
             <div className="flex justify-between items-center mb-8">
                 <div>
                     <h1 className="text-2xl font-bold text-slate-900">Dashboard</h1>
@@ -85,7 +86,6 @@ export function Dashboard(){
                     <Chart transactions={transactions} />
                 </div>
             </div>
-            <TransactionModal isOpen={isModalOpen} onClose={()=>setIsModalOpen(false)} onSuccess={fetchTransactions}/>
         </div>
     );
 }

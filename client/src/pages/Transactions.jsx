@@ -49,7 +49,7 @@ export function Transactions(){
                 <h1 className="text-2xl font-bold text-slate-900">Transaction History</h1>
                 <div className="flex bg-white p-1 rounded-lg border border-slate-200 shadow-sm">
                     {['all', 'week', 'month', 'year'].map((f)=>(
-                        <button key={f} onClick={()=>setFilter(f)} className={`px-4 py-1.5 rounded-md text-sm font-medium capitalize transition-all ${filter===f?'bg-slate-800 text-white shadow-sm':'text-slate-600 hover:bg-slate-50'}`}>
+                        <button key={f} onClick={()=>setFilter(f)} className={`px-4 py-1.5 rounded-md text-sm font-medium capitalize ${filter===f?'bg-slate-800 text-white shadow-sm':'text-slate-600 hover:bg-slate-50'}`}>
                             {f==='all'?'All Time':f}
                         </button>
                     ))}
@@ -60,9 +60,9 @@ export function Transactions(){
                 {loading?(
                     <div className="p-12 text-center text-slate-500">Loading history...</div>
                 ):(
-                    <div className="divide-y divide-slate-100">
+                    <div className="divide-y divide-slate-200">
                         {transactions.map((t)=>(
-                            <div key={t._id} className="group flex items-center justify-between p-4 hover:bg-slate-50 transition-colors">
+                            <div key={t._id} className="group flex items-center justify-between p-4 hover:bg-slate-50">
                                 <div className="flex items-center gap-4">
                                     <div className={`w-12 h-12 rounded-lg flex items-center justify-center text-xl ${t.type==='income'?'bg-emerald-50 text-emerald-600':'bg-red-50 text-red-600'}`}>
                                         {t.category==='Food'&&'🍔'}
@@ -89,8 +89,8 @@ export function Transactions(){
                                         <p className={`font-bold ${t.type==='income'?'text-emerald-600':'text-slate-900'}`}>{t.type==='income'?'+':'-'}₹{t.amount}</p>
                                     </div>
                                     <div className="flex gap-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity">
-                                        <button onClick={()=>handleEdit(t)} className="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-full transition-colors" title="Edit"><Pencil size={18}/></button>
-                                        <button onClick={()=>handleDelete(t._id)} className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-full transition-colors" title="Delete"><Trash2 size={18}/></button>
+                                        <button onClick={()=>handleEdit(t)} className="p-2 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-full " title="Edit"><Pencil size={18}/></button>
+                                        <button onClick={()=>handleDelete(t._id)} className="p-2 text-slate-400 hover:text-red-600 hover:bg-red-50 rounded-full " title="Delete"><Trash2 size={18}/></button>
                                     </div>
                                 </div>
                             </div>

@@ -36,7 +36,8 @@ export function Signup(){
                 navigate('/dashboard');
             } 
         } catch (err) {
-            setError("Application Error: "+ err.message);
+            if(err.status===400) setError(`${err.response.data.message}`);
+            else setError("Application Error: " + err.message);
         }
     };
 
