@@ -2,9 +2,6 @@
 
 A minimalist, full-stack expense tracking application built to help users manage their finances effectively. It features a responsive dashboard, data visualization, and secure authentication.
 
-![Project Preview](client/src/assets/desktopPrev.png)
-*(Replace the link above with your actual screenshot path relative to this file)*
-
 ## 🚀 Features
 
 * **📊 Interactive Dashboard:** View total balance, income, and expenses at a glance. Includes a visual breakdown of spending by category using dynamic charts.
@@ -38,8 +35,6 @@ A minimalist, full-stack expense tracking application built to help users manage
 |:---:|:---:|
 | <img src="client/src/assets/desktopPrev.png" width="400" /> | <img src="client/src/assets/mobilePrev.png" width="200" /> |
 
-*(Make sure to capture these screenshots and save them in your repo!)*
-
 ## ⚡ Getting Started
 
 ### Prerequisites
@@ -47,7 +42,7 @@ Make sure you have **Node.js** and **MongoDB** installed on your machine.
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/your-username/personal-finance-tracker.git](https://github.com/Gurpreet-05/PersonalFinanceTracker.git)
+git clone [https://github.com/Gurpreet-05/PersonalFinanceTracker.git]
 cd personal-finance-tracker
 2. Backend Setup
 Navigate to the server folder and install dependencies:
