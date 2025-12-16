@@ -1,6 +1,6 @@
 # 💰 Personal Finance Tracker (PFT)
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](REPLACE_WITH_YOUR_VERCEL_LINK)
+[![Live Demo](https://personal-finance-tracker-roan-psi.vercel.app/)]
 
 A minimalist, full-stack expense tracking application built to help users manage their finances effectively. It features a responsive dashboard, real-time data visualization, and secure authentication.
 
@@ -44,7 +44,7 @@ Make sure you have **Node.js** and **MongoDB** installed on your machine.
 
 ### 1. Clone the Repository
 ```bash
-git clone [https://github.com/Gurpreet-05/PersonalFinanceTracker.git](https://github.com/Gurpreet-05/PersonalFinanceTracker.git)
+git clone [https://github.com/Gurpreet-05/PersonalFinanceTracker.git]
 cd PersonalFinanceTracker
 ```
 
