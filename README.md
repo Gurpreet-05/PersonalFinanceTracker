@@ -1,6 +1,5 @@
 # 💰 Personal Finance Tracker (PFT)
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)(https://personal-finance-tracker-roan-psi.vercel.app/)]
 
 A minimalist, full-stack expense tracking application built to help users manage their finances effectively. It features a responsive dashboard, real-time data visualization, and secure authentication.
 
