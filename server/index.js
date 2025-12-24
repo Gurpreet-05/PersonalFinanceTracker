@@ -19,7 +19,7 @@ async function Connect(){
 Connect();
 const app=express();
 app.use(cors({
-    origin:"https://vercel.com/gurpreets-projects-1c1382e7/personal-finance-tracker/Cjw5aAd19APRurnLu3MQ8WYfsAvj"
+    origin:""
 }));
 app.use(express.json());
 
