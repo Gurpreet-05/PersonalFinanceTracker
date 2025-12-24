@@ -19,7 +19,7 @@ async function Connect(){
 Connect();
 const app=express();
 app.use(cors({
-    origin:"https://personal-finance-tracker-roan-psi.vercel.app/"
+    origin:"https://personal-finance-tracker-roan-psi.vercel.app"
 }));
 app.use(express.json());
 
